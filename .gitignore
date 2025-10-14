@@ -1,0 +1,13 @@
+# virtual environments
+.venv/
+venv/
+
+# Python bytecode
+*.pyc
+__pycache__/
+
+# log files
+*.log
+
+# protected raw data
+data/raw/
