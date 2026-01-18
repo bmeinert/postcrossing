@@ -11,7 +11,7 @@ __pycache__/
 
 # protected raw data
 data/raw/*
-*!data/raw/.gitkeep
+!data/raw/.gitkeep
 
 #experimental notebooks
 notebooks/local_experimental/*
