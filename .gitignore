@@ -12,3 +12,6 @@ __pycache__/
 # protected raw data
 data/raw/*
 *!data/raw/.gitkeep
+
+#experimental notebooks
+notebooks/postcrossing_datacleaning.ipynb
