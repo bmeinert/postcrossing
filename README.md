@@ -6,17 +6,17 @@
 
 A data science project to analyze worldwide postal transit times based on personal Postcrossing (https://postcrossing.com) exports. This project automates the parsing of JSON data, performs robust data cleansing, and calculates efficiency KPIs for international postal routes.
 
-## Project Status
-- [x] Data parsing of official Postcrossing JSON exports
-- [x] Robust data cleansing & anonymization (removal of IDs/Usernames)
-- [x] Calculation of logistics efficiency metrics (Days per 1,000 km)
-- [ ] Global trajectory visualization (In Progress)
-
 ## Key Insights
 The pipeline is designed to identify and analyze specific anomalies in global logistics:
 
 * **USA (The 2025/26 'Black Hole'):** Analysis of significant transit bottlenecks and increased travel times for mail routes from Germany to the United States.
 * **Russia (Geopolitical Impact):** Longitudinal study of logistics efficiency shifts following the onset of the conflict in Ukraine, documenting the transition from air to land-based transit.
+
+## Project Status
+- [x] Data parsing of official Postcrossing JSON exports
+- [x] Robust data cleansing & anonymization (removal of IDs/Usernames)
+- [x] Calculation of logistics efficiency metrics (Days per 1,000 km)
+- [ ] Global trajectory visualization (In Progress)
 
 ## 🛠 Installation & Usage
 The script requires Python 3.x and the `pandas` library.
