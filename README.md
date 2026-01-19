@@ -23,7 +23,7 @@ The script requires Python 3.x and the `pandas` library.
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/](https://github.com/)[bmeinert]/postcrossing.git
+   git clone [https://github.com/](https://github.com/)[bmeinert]/Postcrossing.git
 2. **Prepare Data:**
    Place your raw JSON exports in the data/raw/ directory.
 3. **Run the Pipeline:**
