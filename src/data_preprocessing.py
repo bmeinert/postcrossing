@@ -15,7 +15,8 @@ License:
         Data and Visualizations: CC BY-SA 4.0
 
 """
-
+import sys
+print(sys.executable)
 
 import pandas as pd
 import json
@@ -56,7 +57,7 @@ def process_single_file(file_path):
         
         # efficiency metric: days per 1000km
         df["days_per_1000km"] = (df["travel_time_days"] / (df["distance_km"] / 1000)).round(2)
-        df["travel_route"] = df["country_id_origin"] + "-" + df["country_id_dest"]
+        df["travel_route"] = df["country_id_origin"].astype(str) + "-" + df["country_id_dest"].astype(str)
         
         # clean columns
         drop_cols = ["unknown", "user", "image_exists"]
@@ -98,9 +99,7 @@ def load_all_data(folder_path):
 if __name__ == "__main__":
     # path configuration
     BASE_DIR = Path(__file__).resolve().parent
-    #RAW_DATA_DIR = "D:/Datenprojekte/Postcrossing/data/raw"
     RAW_DATA_DIR = BASE_DIR.parent / "data" / "raw"
-    #OUTPUT_FILE = "D:/Datenprojekte/Postcrossing/data/processed/cleaned_data.csv"
     OUTPUT_FILE = BASE_DIR.parent / "data" / "processed" / "cleaned_data.csv"
 
     logging.info("Starts data processing...")
