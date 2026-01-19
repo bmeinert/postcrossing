@@ -4,7 +4,7 @@
 
 # Postcrossing Global Logistics Analysis
 
-A data science project to analyze worldwide postal transit times based on personal Postcrossing (https://postcrossing.com) exports. This project automates the parsing of JSON data, performs robust data cleansing, and calculates efficiency KPIs for international postal routes.
+A data science project to analyze worldwide postal transit times based on personal Postcrossing (https://postcrossing.com) exports. This project provides a robust framework for processing JSON-based postal data, performing comprehensive data cleansing, and calculating efficiency KPIs for international routes."
 
 ## Key Insights
 The pipeline is designed to identify and analyze specific anomalies in global logistics:
