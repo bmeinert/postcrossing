@@ -13,5 +13,6 @@ __pycache__/
 data/raw/*
 !data/raw/.gitkeep
 
-#experimental notebooks
+#experimental notebooks and scripts
 notebooks/local_experimental/*
+src/local_development/*
