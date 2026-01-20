@@ -30,6 +30,10 @@ The script requires Python 3.x and the `pandas` library.
    ```bash
    python data_preprocessing.py
 
+### Challenges & Edge Cases
+* **The "Namibia Problem" (Data Collision):** During processing, I identified a systematic data loss for entries from Namibia. The ISO country code `NA` was being misinterpreted as a Null value (`NaN`) by the Pandas parser. 
+* **Solution:** Implemented explicit string casting and customized the missing value detection to ensure 100% data integrity for all geographic regions.
+
 ## Privacy & Data Ethics
 
 This project strictly adheres to privacy standards and the Postcrossing Terms of Service:
