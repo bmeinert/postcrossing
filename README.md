@@ -18,23 +18,27 @@ The pipeline is designed to identify and analyze specific anomalies in global lo
 - [x] Calculation of logistics efficiency metrics (Days per 1,000 km)
 - [ ] Global trajectory visualization (In Progress)
 
-## Installation & Usage
-The script requires Python 3.x and the `pandas` library.
+## 🛠 Installation & Usage
+The script requires Python 3.12 
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/bmeinert/postcrossing.git
-2. **Prepare Data:**
+2. **Install the requirements.txt**
+   ```bash
+   pip install -r reuirements.txt
+3. **Prepare Data:**
    Place your raw JSON exports in the data/raw/ directory.
-3. **Run the Pipeline:**
+   Naming convention: 
+   - received_ID_user_date.json
+   - sent_ID_user_date.json
+   dateformat: YYYYMMDD
+4. **Run the Pipeline:**
    ```bash
    python data_preprocessing.py
 
-## Contextual Analysis
-* **US Custom Regulations:** The observed increase in travel times to the US aligns with major regulatory changes: the full implementation of the STOP Act and the 2024/2025 crackdown on De-minimis shipments, which caused unprecedented congestion at major US Customs and Border Protection (CBP) international processing centers."
-
-## Challenges & Edge Cases
-* **The "Namibia Problem" (Data Collision):** During processing, I identified a systematic data loss for entries from Namibia. The ISO country code `NA` was being misinterpreted as a Null value (`NaN`) by the Pandas parser. 
+### Challenges & Edge Cases
+* **The "Namibia Problem" (Data Collision):** During processing, a systematic data loss for entries from Namibia were detected. The ISO country code `NA` was being misinterpreted as a Null value (`NaN`) by the Pandas parser. 
 * **Solution:** Implemented explicit string casting and customized the missing value detection to ensure 100% data integrity for all geographic regions.
 
 ## Privacy & Data Ethics
