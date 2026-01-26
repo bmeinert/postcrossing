@@ -12,6 +12,8 @@ __pycache__/
 # protected raw data
 data/raw/*
 !data/raw/.gitkeep
+# huge csv
+data/processed/cleaned_data.csv
 
 #experimental notebooks and scripts
 notebooks/local_experimental/*
