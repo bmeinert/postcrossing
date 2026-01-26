@@ -1,8 +1,11 @@
 backports.tarfile==1.2.0
 importlib-metadata==8.0.0
 ipykernel==7.0.1
+ipywidgets==8.1.8
 jaraco.collections==5.1.0
 matplotlib==3.10.7
+nbformat==5.10.4
 pandas==2.3.3
 pip-chill==1.0.3
+plotly==6.5.2
 tomli==2.0.1

@@ -19,16 +19,27 @@ The pipeline is designed to identify and analyze specific anomalies in global lo
 - [ ] Global trajectory visualization (In Progress)
 
 ## 🛠 Installation & Usage
-The script requires Python 3.x and the `pandas` library.
+The script requires Python 3.12 
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/bmeinert/postcrossing.git
-2. **Prepare Data:**
+2. **Install the requirements.txt**
+   ```bash
+   pip install -r reuirements.txt
+3. **Prepare Data:**
    Place your raw JSON exports in the data/raw/ directory.
-3. **Run the Pipeline:**
+   Naming convention: 
+   - received_ID_user_date.json
+   - sent_ID_user_date.json
+   dateformat: YYYYMMDD
+4. **Run the Pipeline:**
    ```bash
    python data_preprocessing.py
+
+### Challenges & Edge Cases
+* **The "Namibia Problem" (Data Collision):** During processing, a systematic data loss for entries from Namibia were detected. The ISO country code `NA` was being misinterpreted as a Null value (`NaN`) by the Pandas parser. 
+* **Solution:** Implemented explicit string casting and customized the missing value detection to ensure 100% data integrity for all geographic regions.
 
 ## Privacy & Data Ethics
 

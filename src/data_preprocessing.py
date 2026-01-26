@@ -3,8 +3,8 @@ Postcrossing Data Pipeling: Cleaning and Preprocessing
 ===============================================================
 
 Author: /bmeinert
-Date: 2026-01-18
-Version: 1.0.0
+Date: 2026-01-20
+Version: 1.0.1
 Description: Extracts Postcrossing export data (JSON), performs data 
              cleansing, and calculates logistics KPIs (travel days/1000km).
              Processes data for global postal transit time analysis.
@@ -15,8 +15,6 @@ License:
         Data and Visualizations: CC BY-SA 4.0
 
 """
-import sys
-print(sys.executable)
 
 import pandas as pd
 import json
@@ -42,7 +40,7 @@ def process_single_file(file_path):
         # Extraction from filename
         parts = file_path.stem.split("_")
         if "received" in file_path.name.lower() and len(parts) >= 3:
-            df["country_id_dest"] = parts[1].upper()
+            df["country_id_dest"] = str(parts[1].upper())
         
         if len(parts) >= 4:
             df["extraction_date"] = pd.to_datetime(parts[3], format="%Y%m%d", errors='coerce')
@@ -53,7 +51,7 @@ def process_single_file(file_path):
         # Transformations
         df["sent_date"] = pd.to_datetime(df["sent_date"], unit="s").dt.normalize()
         df["received_date"] = pd.to_datetime(df["received_date"], unit="s").dt.normalize()
-        df["country_id_origin"] = df["postcard_id"].str.split("-", expand=True)[0]
+        df["country_id_origin"] = df["postcard_id"].str.split("-", expand=True)[0].astype(str)
         
         # efficiency metric: days per 1000km
         df["days_per_1000km"] = (df["travel_time_days"] / (df["distance_km"] / 1000)).round(2)
@@ -91,9 +89,20 @@ def load_all_data(folder_path):
     # Final concatenation and deduplication
     num_files = len(file_paths)
     df_all = pd.concat(df_list, ignore_index=True)
+
     df_all = df_all.drop_duplicates(subset=["postcard_id"])
     df_all = df_all.drop(columns=["postcard_id"]) # delete ID after deduplication
+
+    # Fixing Namibia country code
+    if "country_id_dest" in df_all.columns:
+        df_all["country_id_dest"] = df_all["country_id_dest"].astype(str)
+        df_all["country_id_dest"] = df_all["country_id_dest"].replace(['nan', 'None', 'NaN'], 'NA').astype(str)
+    if "country_id_origin" in df_all.columns:
+        df_all["country_id_origin"] = df_all["country_id_origin"].astype(str)
+        df_all["country_id_origin"] = df_all["country_id_origin"].replace(['nan', 'None', 'NaN'], 'NA').astype(str)
+
     logging.info(f"Processed {num_files} files with total {len(df_all)} unique postcards.") 
+
     return df_all
 
 if __name__ == "__main__":
