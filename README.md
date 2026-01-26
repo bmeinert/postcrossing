@@ -19,8 +19,8 @@ The pipeline is designed to identify and analyze specific anomalies in global lo
 - [ ] Global trajectory visualization (In Progress)
 
 ## 🛠 Installation & Usage
-The script requires 
-- Python 3.12 
+The script requires Python 3.12 
+
 **Install the requirements**
    ```bash
    pip install -r requirements.txt
