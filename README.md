@@ -21,20 +21,19 @@ The pipeline is designed to identify and analyze specific anomalies in global lo
 ## 🛠 Installation & Usage
 The script requires Python 3.12 
 
-**Install the requirements**
-   ```bash
-   pip install -r requirements.txt
-
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/bmeinert/postcrossing.git
-2. **Prepare Data:**
+2. **Install the requirements.txt**
+   ```bash
+   pip install -r reuirements.txt
+3. **Prepare Data:**
    Place your raw JSON exports in the data/raw/ directory.
    Naming convention: 
    - received_ID_user_date.json
    - sent_ID_user_date.json
    dateformat: YYYYMMDD
-3. **Run the Pipeline:**
+4. **Run the Pipeline:**
    ```bash
    python data_preprocessing.py
 
