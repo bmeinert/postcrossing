@@ -4,7 +4,7 @@ Postcrossing Data Pipeling: Cleaning and Preprocessing
 
 Author: /bmeinert
 Date: 2026-01-20
-Version: 1.0.1
+Version: 1.0.2
 Description: Extracts Postcrossing export data (JSON), performs data 
              cleansing, and calculates logistics KPIs (travel days/1000km).
              Processes data for global postal transit time analysis.
@@ -48,12 +48,18 @@ def process_single_file(file_path):
             if invalid_dates >  0:
                 logging.warning(f"{invalid_dates} invalid extraction dates in {file_path.name}.")
 
+        if len(parts) >= 1:
+            df["type"] = str(parts[0].lower())
+
+        if len(parts) >= 2:
+            df["user_country"] = str(parts[1].upper())
+
         # Transformations
         df["sent_date"] = pd.to_datetime(df["sent_date"], unit="s").dt.normalize()
         df["received_date"] = pd.to_datetime(df["received_date"], unit="s").dt.normalize()
         df["country_id_origin"] = df["postcard_id"].str.split("-", expand=True)[0].astype(str)
         
-        # efficiency metric: days per 1000km
+        # additional columns
         df["days_per_1000km"] = (df["travel_time_days"] / (df["distance_km"] / 1000)).round(2)
         df["travel_route"] = df["country_id_origin"].astype(str) + "-" + df["country_id_dest"].astype(str)
         

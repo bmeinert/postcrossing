@@ -9,9 +9,10 @@ __pycache__/
 # log files
 *.log
 
-# protected raw data
+# protected data and files
 data/raw/*
 !data/raw/.gitkeep
+.env
 # huge csv
 data/processed/cleaned_data.csv
 
